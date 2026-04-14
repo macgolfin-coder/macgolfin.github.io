@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac Golfin | Film • Writing • Music</title>
+    <meta name="description" content="Mac Golfin - Film Production, Creative Writing, and Original Music. Story-driven visual content for brands and artists.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#0a0a0a',
+                        dark: '#1a1a1a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        
+        .bounce-arrow {
+            animation: bounce 2s infinite;
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #FF6B35;
+            border-radius: 4px;
+        }
+        
+        /* Work Card Hover */
+        .work-card {
+            transition: all 0.3s ease;
+        }
+        
+        .work-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Nav Transition */
+        .nav-scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Form Focus */
+        .form-input:focus {
+            border-color: #FF6B35;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+        }
+        
+        /* Button Gradient */
+        .btn-gradient {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8E53 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-secondary text-white font-sans antialiased">
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold tracking-tight">Mac Golfin</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#work" class="hover:text-primary transition">Work</a>
+                    <a href="#about" class="hover:text-primary transition">About</a>
+                    <a href="#contact" class="hover:text-primary transition">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark">
+            <div class="container mx-auto px-6 py-4 space-y-4">
+                <a href="#work" class="block hover:text-primary">Work</a>
+                <a href="#about" class="block hover:text-primary">About</a>
+                <a href="#contact" class="block hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                 alt="Film Production Background" 
+                 class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-secondary/80 via-secondary/60 to-secondary"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-6">
+            <h1 class="text-6xl md:text-8xl font-bold mb-4 fade-in-up opacity-0">
+                Mac Golfin
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 tracking-[0.3em] fade-in-up delay-200 opacity-0">
+                FILM • WRITING • MUSIC
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center fade-in-up delay-300 opacity-0">
+                <a href="#work" class="btn-gradient px-8 py-4 rounded-lg font-semibold text-white inline-block">
+                    View Work
+                </a>
+                <a href="#contact" class="border-2 border-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-secondary transition inline-block">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 bounce-arrow">
+            <a href="#work" class="text-white opacity-70 hover:opacity-100 transition">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Work Section -->
+    <section id="work" class="py-24 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal text-center">Selected Work</h2>
+            <p class="text-gray-400 text-center mb-16 reveal">Story-driven visual content for brands and artists</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Film Production -->
+                <div class="work-card bg-dark rounded-lg overflow-hidden reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Film Production" 
+                             class="w-full h-full object-cover transition transform hover:scale-110 duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-primary text-sm font-semibold tracking-wider uppercase">Film</span>
+                        <h3 class="text-2xl font-bold mt-2 mb-3">Film Production</h3>
+                        <p class="text-gray-400 mb-4">Story-driven visual content for brands and artists.</p>
+                        <a href="#" class="text-primary hover:text-white transition flex items-center gap-2">
+                            View Projects
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Creative Writing -->
+                <div class="work-card bg-dark rounded-lg overflow-hidden reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Creative Writing" 
+                             class="w-full h-full object-cover transition transform hover:scale-110 duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-primary text-sm font-semibold tracking-wider uppercase">Writing</span>
+                        <h3 class="text-2xl font-bold mt-2 mb-3">Creative Writing</h3>
+                        <p class="text-gray-400 mb-4">Essays, scripts, and narrative experiments.</p>
+                        <a href="#" class="text-primary hover:text-white transition flex items-center gap-2">
+                            Read More
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Original Music -->
+                <div class="work-card bg-dark rounded-lg overflow-hidden reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Original Music" 
+                             class="w-full h-full object-cover transition transform hover:scale-110 duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-primary text-sm font-semibold tracking-wider uppercase">Music</span>
+                        <h3 class="text-2xl font-bold mt-2 mb-3">Original Music</h3>
+                        <p class="text-gray-400 mb-4">Compositions and sound design.</p>
+                        <a href="#" class="text-primary hover:text-white transition flex items-center gap-2">
+                            Listen Now
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Latest Updates Section -->
+    <section class="py-24 bg-dark px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold mb-12 reveal text-center">Latest Updates</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-8">
+                <!-- Update 1 -->
+                <div class="reveal border-l-4 border-primary pl-6">
+                    <span class="text-gray-500 text-sm">April 13, 2026</span>
+                    <h3 class="text-xl font-bold mt-1 mb-2">AI Agent Learning Journey</h3>
+                    <p class="text-gray-400">Exploring how AI transforms academic research and creative workflows.</p>
+                </div>
+                
+                <!-- Update 2 -->
+                <div class="reveal border-l-4 border-primary pl-6">
+                    <span class="text-gray-500 text-sm">April 12, 2026</span>
+                    <h3 class="text-xl font-bold mt-1 mb-2">New Script Analysis</h3>
+                    <p class="text-gray-400">Using Claude for character development and story structure.</p>
+                </div>
+                
+                <!-- Update 3 -->
+                <div class="reveal border-l-4 border-primary pl-6">
+                    <span class="text-gray-500 text-sm">April 11, 2026</span>
+                    <h3 class="text-xl font-bold mt-1 mb-2">Job Application Automation</h3>
+                    <p class="text-gray-400">Building systems to streamline creative job hunting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6">
+        <div class="container mx-auto">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 reveal">About</h2>
+                <p class="text-xl text-gray-300 mb-8 reveal">
+                    I'm Charles Schemm, a filmmaker, writer, and musician based in California. 
+                    I create story-driven content that connects with audiences on a deeper level.
+                </p>
+                <p class="text-gray-400 mb-8 reveal">
+                    My work spans film production, creative writing, and original music composition. 
+                    I'm currently exploring how AI agents can enhance creative workflows and storytelling.
+                </p>
+                <div class="flex justify-center gap-6 reveal">
+                    <a href="https://instagram.com" target="_blank" class="w-12 h-12 rounded-full bg-dark flex items-center justify-center hover:bg-primary transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="w-12 h-12 rounded-full bg-dark flex items-center justify-center hover:bg-primary transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="w-12 h-12 rounded-full bg-dark flex items-center justify-center hover:bg-primary transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-dark px-6">
+        <div class="container mx-auto">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal text-center">Get in Touch</h2>
+                <p class="text-gray-400 text-center mb-12 reveal">Let's create something amazing together.</p>
+                
+                <form class="space-y-6 reveal" id="contact-form">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Name</label>
+                        <input type="text" required 
+                               class="form-input w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg text-white placeholder-gray-500"
+                               placeholder="Your name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Email</label>
+                        <input type="email" required 
+                               class="form-input w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg text-white placeholder-gray-500"
+                               placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Message</label>
+                        <textarea required rows="5"
+                                  class="form-input w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg text-white placeholder-gray-500 resize-none"
+                                  placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-gradient w-full py-4 rounded-lg font-semibold text-white">
+                        Send Message
+                    </button>
+                </form>
+                
+                <div class="mt-12 text-center reveal">
+                    <p class="text-gray-400 mb-4">Or reach me directly:</p>
+                    <a href="mailto:contact@macgolfin.com" class="text-primary hover:text-white transition text-lg">
+                        contact@macgolfin.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">
+                    © 2026 Mac Golfin. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#work" class="text-gray-500 hover:text-white text-sm transition">Work</a>
+                    <a href="#about" class="text-gray-500 hover:text-white text-sm transition">About</a>
+                    <a href="#contact" class="text-gray-500 hover:text-white text-sm transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Reveal animation on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+        
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            
+            // Simulate sending (replace with actual form handling)
+            setTimeout(() => {
+                btn.textContent = 'Message Sent!';
+                setTimeout(() => {
+                    btn.textContent = 'Send Message';
+                    btn.disabled = false;
+                    e.target.reset();
+                }, 2000);
+            }, 1500);
+        });
+        
+        // Console greeting
+        console.log('%c Mac Golfin ', 'background: #FF6B35; color: white; font-size: 20px; padding: 10px;');
+        console.log('%c Welcome to my portfolio! ', 'font-size: 14px;');
+    </script>
+</body>
+</html>
